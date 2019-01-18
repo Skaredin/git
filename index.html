@@ -4,3 +4,88 @@ index
 <h3> hello git bro <h3>
 Master & Branch2
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace GG1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string login = textBox1.Text;
+            string Email = textBox2.Text;
+            string Password = textBox3.Text;
+            string kpass = textBox4.Text;
+            if (login.Length < 3 || login.Length > 32)
+            {
+                MessageBox.Show("Вы ввели свой логин");
+            }
+            else
+            {
+                MessageBox.Show("Вы не ввели логин");
+                return;
+            }
+            if (Email.Contains("@") | (Email.Contains(".") && Email.Length < 3 || Email.Length > 32))
+            {
+                MessageBox.Show("Введен корректный Email");
+            }
+            if (Password != kpass)
+            {
+                MessageBox.Show("Пароли не совпадают");
+            }
+            if (Password.Length < 6 || Password.Length > 18)
+            {
+                MessageBox.Show("Длина символов пароля недостаточна или превышает лимит");
+            }
+            if (Password.Contains('0') | Password.Contains('1') | Password.Contains('2') | Password.Contains('3') | Password.Contains('4') | Password.Contains('5') | Password.Contains('6') | Password.Contains('7') | Password.Contains('8') | Password.Contains('9'))
+            {
+                MessageBox.Show("В пароле присутствуют цифры");
+            }
+            if (Password.Contains('*') | Password.Contains('&') | Password.Contains('{') | Password.Contains('}') | Password.Contains('|') | Password.Contains('+') | Password.Contains('.'))
+            {
+                MessageBox.Show("В пароле присутствует обязательный символ из допустимого набора: * & { } | + .");
+            }
+            else
+            {
+                MessageBox.Show("Отсутсвует обязательный символ из допустимого набора: * & { } | + .");
+            }
+            for (int i = 0; i < Password.Length -2; i++)
+            {
+            if (Password[i] == Password[i + 1] && Password[i + 1] == Password[i + 2])
+            {
+                MessageBox.Show("Вы зарегестрированы");
+            }
+            else
+            {
+                MessageBox.Show("Не должно присутствовать 3 повторных символов");
+                return;
+            }
+            }
+            }
+        }
+    }
+}
+    
